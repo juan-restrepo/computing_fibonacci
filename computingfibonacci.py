@@ -107,8 +107,9 @@ class QuadraticNumberRing:
 #this functions gives the N-th fibonacci number
 def fib(N):
 	z = QuadraticNumberRing(Fractions(1,2),Fractions(1,2))
-	zbar = QuadraticNumberRing(Fractions(1,2),Fractions(-1,2))
-	return (z.exp(N) - zbar.exp(N)).b
+	# zbar = QuadraticNumberRing(Fractions(1,2),Fractions(-1,2))
+	# return (z.exp(N) - zbar.exp(N)).b
+	return Fraction(2) * z.exp(N).b
 
 		
 
