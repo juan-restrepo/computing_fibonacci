@@ -24,7 +24,7 @@ class Fractions:
 			return True
 		return False
 
-	def __str__(self):
+	def __repr__(self):
 		if self.denom == 1:
 			return "%d" % self.num
 		else:
@@ -47,7 +47,7 @@ class QuadraticNumberRing:
 		return QuadraticNumberRing(self.a - other.a, self.b - other.b)
 
 	def __mul__(self, other):
-		return QuadraticNumberRing(self.a*other.a + Fractions(5)*self.b*other.b, self.b*other.a + self.a*other.b)	
+		return QuadraticNumberRing(self.a*other.a + Fractions(5)*self.b*other.b, self.b*other.a + self.a*other.b)
 
 	#exp returns self raised to the n-th power
 	def exp(self,n):
@@ -55,7 +55,7 @@ class QuadraticNumberRing:
 			return QuadraticNumberRing(Fractions(1),Fractions(0))
 		if n==1:
 			return self
-		temp = self.exp(n/2)
+		temp = self.exp(n//2)
 		if n%2==0:
 			return temp*temp
 		else:
@@ -66,7 +66,7 @@ class QuadraticNumberRing:
 			return True
 		return False
 
-	def __str__(self):
+	def __repr__(self):
 		if self.b == Fractions(0):
 			#return self.a
 			#return "fix this"
@@ -109,9 +109,11 @@ def fib(N):
 	z = QuadraticNumberRing(Fractions(1,2),Fractions(1,2))
 	# zbar = QuadraticNumberRing(Fractions(1,2),Fractions(-1,2))
 	# return (z.exp(N) - zbar.exp(N)).b
-	return Fraction(2) * z.exp(N).b
+	zexp = z.exp(N)
+	# print(zexp)
+	return Fractions(2) * zexp.b
 
-		
+
 
 def main(): #this is to do stuff
 
@@ -123,9 +125,9 @@ def main(): #this is to do stuff
 	# for i in range(10):
 	# 	print z.exp(i)
 	# print QuadraticNumberRing(Fractions(1),Fractions(0))
-	N = input("Type a positive integer:")
-	print "The %d-th fibonacci number is" % N, fib(N)
-
+	N = int(input("Type a positive integer: "))
+	# print "The %d-th fibonacci number is" % N, fib(N)
+	print("The %d-th fibonacci number is" % N, fib(N))
 
 	# print Fractions(6,2)
 	# print Fractions(3,2)
